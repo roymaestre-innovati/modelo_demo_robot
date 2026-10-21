@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="960" viewBox="0 0 600 960">
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#C9CED6"/>
+    <stop offset="0.35" stop-color="#F7F8FA"/>
+    <stop offset="0.6" stop-color="#FFFFFF"/>
+    <stop offset="1" stop-color="#D3D8DF"/>
+  </linearGradient>
+  <radialGradient id="bodyR" cx="0.4" cy="0.35" r="0.75">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset="0.6" stop-color="#EEF0F3"/>
+    <stop offset="1" stop-color="#C3C9D1"/>
+  </radialGradient>
+  <linearGradient id="dark" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#2A2E35"/>
+    <stop offset="0.45" stop-color="#555B65"/>
+    <stop offset="1" stop-color="#2A2E35"/>
+  </linearGradient>
+  <radialGradient id="darkR" cx="0.4" cy="0.35" r="0.7">
+    <stop offset="0" stop-color="#6A707A"/>
+    <stop offset="1" stop-color="#25282E"/>
+  </radialGradient>
+  <radialGradient id="screen" cx="0.35" cy="0.25" r="0.9">
+    <stop offset="0" stop-color="#2B3038"/>
+    <stop offset="0.45" stop-color="#0B0D10"/>
+    <stop offset="1" stop-color="#000000"/>
+  </radialGradient>
+  <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.35"/>
+    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect width="600" height="960" fill="#ECEFF3"/><ellipse cx="300" cy="862" rx="150" ry="16" fill="#000" opacity="0.10"/><g id="bh"><rect x="-28" y="-80.53808142671372" width="56" height="161.07616285342743" rx="28" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(260.0,627.5) rotate(2.181641403551467)"/><path d="M -27 -50.00999900019995 A 27 27 0 0 1 27 -50.00999900019995 L 24 50.00999900019995 A 24 24 0 0 1 -24 50.00999900019995 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(257.0,740.0) rotate(1.1457628381751022)"/><circle cx="258" cy="686" r="18" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><ellipse cx="252" cy="830" rx="44" ry="30" fill="url(#bodyR)" stroke="#9AA2AD" stroke-width="1.5"/><circle cx="262" cy="570" r="19" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><rect x="-21" y="-62.23105625617661" width="42" height="124.46211251235322" rx="21" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(184.0,400.0) rotate(22.833654177917538)"/><path d="M -20 -34.6878941419049 A 20 20 0 0 1 20 -34.6878941419049 L 18 34.6878941419049 A 18 18 0 0 1 -18 34.6878941419049 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(157.0,481.5) rotate(15.037815903582256)"/><circle cx="167" cy="443" r="15" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><g transform="translate(144,522) rotate(14) scale(1.15)"><ellipse cx="0" cy="14" rx="22" ry="20" fill="url(#bodyR)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="-9" y="-18.013878188659973" width="18" height="36.027756377319946" rx="9" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(-9.5,37.0) rotate(3.179830119864235)"/><rect x="-9" y="-18.013878188659973" width="18" height="36.027756377319946" rx="9" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(9.5,37.0) rotate(-3.179830119864235)"/><rect x="-8" y="-17.899494936611667" width="16" height="35.798989873223334" rx="8" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(23.0,15.0) rotate(-45.0)"/></g><circle cx="203" cy="354" r="25" fill="url(#bodyR)" stroke="#9AA2AD" stroke-width="1.5"/><ellipse cx="146" cy="190" rx="16" ry="36" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/></g><use href="#bh" transform="translate(600,0) scale(-1,1)"/><path d="M 222 330 L 378 330 Q 400 330 398 356 L 386 470 Q 382 500 352 502 L 248 502 Q 218 500 214 470 L 202 356 Q 200 330 222 330 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><circle cx="300" cy="380" r="7" fill="#3DE0FF" filter="url(#glow)"/><rect x="246" y="502" width="108" height="16" rx="8" fill="url(#dark)"/><path d="M 236 518 L 364 518 Q 372 518 370 530 L 360 566 Q 300 586 240 566 L 230 530 Q 228 518 236 518 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="276" y="300" width="48" height="36" rx="10" fill="url(#dark)" stroke="#1A1D22" stroke-width="1.5"/><rect x="150" y="68" width="300" height="240" rx="112" fill="url(#bodyR)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="174" y="102" width="252" height="172" rx="84" fill="url(#screen)" stroke="#1A1D22" stroke-width="1.5"/><ellipse cx="270" cy="124" rx="70" ry="14" fill="url(#gloss)"/><g filter="url(#glow)" fill="#3DE0FF"><ellipse cx="248" cy="182" rx="23.0" ry="27.0"/><ellipse cx="352" cy="182" rx="23.0" ry="27.0"/><path d="M 278.0 226 Q 300 241.4 322.0 226" fill="none" stroke="#3DE0FF" stroke-width="5" stroke-linecap="round"/></g><text x="300" y="910" text-anchor="middle" font-family="sans-serif" font-size="30" font-weight="700" fill="#2A2E35">B · Chibi</text><text x="300" y="942" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#5A616B">cabeza grande, cuerpo compacto, manos de 2 dedos</text></svg>

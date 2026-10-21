@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Robin · cara</title>
+<style>
+  body { margin: 0; padding: 16px; background: #1b1e23; color: #cfd6df; font: 14px sans-serif; }
+  h2 { margin: 12px 0 8px; font-size: 16px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 12px; }
+  figure { margin: 0; text-align: center; }
+  canvas { width: 230px; border-radius: 70px; display: block; }
+</style>
+</head>
+<body>
+<h2>Ojos (boca REST)</h2><div class="grid" id="eyes"></div>
+<h2>Bocas (ojos neutral)</h2><div class="grid" id="mouths"></div>
+<script type="module">
+  // Hoja de referencia de todos los estados. Servir con un servidor estatico:
+  //   python3 -m http.server -d assets/face 8123  ->  http://localhost:8123/preview.html
+  import { FaceRenderer, EYE_STATES, MOUTH_SHAPES } from './faceRenderer.js';
+  function add(parent, label, eyes, mouth) {
+    const fig = document.createElement('figure');
+    const c = document.createElement('canvas');
+    const f = new FaceRenderer(c, { width: 460 });
+    f.nextBlink = 1e9;
+    f.setEyes(eyes); f.setMouth(mouth);
+    for (let i = 0; i < 120; i++) f.update(1 / 60);
+    f.draw();
+    fig.append(c, Object.assign(document.createElement('figcaption'), { textContent: label }));
+    parent.append(fig);
+  }
+  for (const e of EYE_STATES) add(document.getElementById('eyes'), e, e, 'REST');
+  for (const m of MOUTH_SHAPES) add(document.getElementById('mouths'), m, 'neutral', m);
+  document.body.dataset.ready = '1';
+</script>
+</body>
+</html>

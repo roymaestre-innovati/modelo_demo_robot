@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="960" viewBox="0 0 600 960">
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#C9CED6"/>
+    <stop offset="0.35" stop-color="#F7F8FA"/>
+    <stop offset="0.6" stop-color="#FFFFFF"/>
+    <stop offset="1" stop-color="#D3D8DF"/>
+  </linearGradient>
+  <radialGradient id="bodyR" cx="0.4" cy="0.35" r="0.75">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset="0.6" stop-color="#EEF0F3"/>
+    <stop offset="1" stop-color="#C3C9D1"/>
+  </radialGradient>
+  <linearGradient id="dark" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#2A2E35"/>
+    <stop offset="0.45" stop-color="#555B65"/>
+    <stop offset="1" stop-color="#2A2E35"/>
+  </linearGradient>
+  <radialGradient id="darkR" cx="0.4" cy="0.35" r="0.7">
+    <stop offset="0" stop-color="#6A707A"/>
+    <stop offset="1" stop-color="#25282E"/>
+  </radialGradient>
+  <radialGradient id="screen" cx="0.35" cy="0.25" r="0.9">
+    <stop offset="0" stop-color="#2B3038"/>
+    <stop offset="0.45" stop-color="#0B0D10"/>
+    <stop offset="1" stop-color="#000000"/>
+  </radialGradient>
+  <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.35"/>
+    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect width="600" height="960" fill="#ECEFF3"/><ellipse cx="300" cy="862" rx="150" ry="16" fill="#000" opacity="0.10"/><g id="dh"><rect x="-19" y="-88.02897942168927" width="38" height="176.05795884337854" rx="19" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(264.0,621.0) rotate(1.6602823689828057)"/><path d="M -18 -59.01906471641176 A 18 18 0 0 1 18 -59.01906471641176 L 14 59.01906471641176 A 14 14 0 0 1 -14 59.01906471641176 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(260.5,761.0) rotate(1.4563586343396793)"/><circle cx="262" cy="696" r="13" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><path d="M 236 824 Q 258 814 282 824 L 286 852 Q 286 860 276 860 L 232 860 Q 222 860 224 850 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><circle cx="266" cy="548" r="14" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><rect x="-13" y="-78.14598989960932" width="26" height="156.29197979921864" rx="13" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(184.0,384.0) rotate(17.878696595841333)"/><path d="M -12.5 -56.04462507680822 A 12.5 12.5 0 0 1 12.5 -56.04462507680822 L 10 56.04462507680822 A 10 10 0 0 1 -10 56.04462507680822 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(147.0,512.0) rotate(15.52411099675426)"/><circle cx="163" cy="452" r="11" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><g transform="translate(129,572) rotate(16) scale(1.0)"><rect x="-14" y="-4" width="28" height="32" rx="11" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="-6" y="-19.009611831257686" width="12" height="38.01922366251537" rx="6" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(-6.5,41.0) rotate(2.202598161765806)"/><rect x="-6" y="-19.009611831257686" width="12" height="38.01922366251537" rx="6" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(6.5,41.0) rotate(-2.202598161765806)"/><rect x="-5.5" y="-17.1619037896906" width="11.0" height="34.3238075793812" rx="5.5" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(18.0,16.0) rotate(-30.963756532073518)"/></g><circle cx="206" cy="316" r="15" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/></g><use href="#dh" transform="translate(600,0) scale(-1,1)"/><path d="M 216 298 Q 300 284 384 298 Q 400 302 396 322 L 362 418 Q 352 436 330 438 L 270 438 Q 248 436 238 418 L 204 322 Q 200 302 216 298 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="280" y="432" width="40" height="44" rx="10" fill="url(#dark)" stroke="#1A1D22" stroke-width="1.5"/><path d="M 282 448 L 318 448 M 282 461 L 318 461" stroke="#1A1D22" stroke-width="2"/><path d="M 244 474 Q 300 466 356 474 Q 364 476 362 488 L 348 534 Q 300 556 252 534 L 238 488 Q 236 476 244 474 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="288" y="250" width="24" height="46" rx="8" fill="url(#dark)" stroke="#1A1D22" stroke-width="1.5"/><ellipse cx="300" cy="158" rx="86" ry="100" fill="url(#bodyR)" stroke="#9AA2AD" stroke-width="1.5"/><ellipse cx="300" cy="162" rx="72" ry="80" fill="url(#screen)" stroke="#1A1D22" stroke-width="1.5"/><ellipse cx="284" cy="108" rx="38" ry="14" fill="url(#gloss)"/><g filter="url(#glow)" fill="#3DE0FF"><rect x="262.0" y="132.0" width="20" height="36" rx="10.0"/><rect x="318.0" y="132.0" width="20" height="36" rx="10.0"/><path d="M 285.0 190 Q 300 200.5 315.0 190" fill="none" stroke="#3DE0FF" stroke-width="5" stroke-linecap="round"/></g><text x="300" y="910" text-anchor="middle" font-family="sans-serif" font-size="30" font-weight="700" fill="#2A2E35">D · Esbelto</text><text x="300" y="942" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#5A616B">pantalla total, cintura visible, extremidades largas</text></svg>

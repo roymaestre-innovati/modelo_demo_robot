@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="960" viewBox="0 0 600 960">
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#C9CED6"/>
+    <stop offset="0.35" stop-color="#F7F8FA"/>
+    <stop offset="0.6" stop-color="#FFFFFF"/>
+    <stop offset="1" stop-color="#D3D8DF"/>
+  </linearGradient>
+  <radialGradient id="bodyR" cx="0.4" cy="0.35" r="0.75">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset="0.6" stop-color="#EEF0F3"/>
+    <stop offset="1" stop-color="#C3C9D1"/>
+  </radialGradient>
+  <linearGradient id="dark" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#2A2E35"/>
+    <stop offset="0.45" stop-color="#555B65"/>
+    <stop offset="1" stop-color="#2A2E35"/>
+  </linearGradient>
+  <radialGradient id="darkR" cx="0.4" cy="0.35" r="0.7">
+    <stop offset="0" stop-color="#6A707A"/>
+    <stop offset="1" stop-color="#25282E"/>
+  </radialGradient>
+  <radialGradient id="screen" cx="0.35" cy="0.25" r="0.9">
+    <stop offset="0" stop-color="#2B3038"/>
+    <stop offset="0.45" stop-color="#0B0D10"/>
+    <stop offset="1" stop-color="#000000"/>
+  </radialGradient>
+  <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.35"/>
+    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect width="600" height="960" fill="#ECEFF3"/><ellipse cx="300" cy="862" rx="150" ry="16" fill="#000" opacity="0.10"/><g id="ah"><rect x="-22" y="-92.0446286306095" width="44" height="184.089257261219" rx="22" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(260.5,618.0) rotate(2.045408488887233)"/><path d="M -21 -59.01906471641176 A 21 21 0 0 1 21 -59.01906471641176 L 17 59.01906471641176 A 17 17 0 0 1 -17 59.01906471641176 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(256.5,759.0) rotate(1.4563586343396793)"/><circle cx="258" cy="694" r="15" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><rect x="222" y="822" width="68" height="38" rx="18" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><circle cx="263" cy="544" r="16" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><rect x="-17" y="-76.23681287847955" width="34" height="152.4736257569591" rx="17" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(174.0,355.0) rotate(21.801409486351815)"/><path d="M -16 -49.52019789944301 A 16 16 0 0 1 16 -49.52019789944301 L 13 49.52019789944301 A 13 13 0 0 1 -13 49.52019789944301 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(136.0,467.5) rotate(16.422187498315296)"/><circle cx="151" cy="415" r="13" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/><g transform="translate(118,522) rotate(18) scale(1.0)"><rect x="-19" y="-4" width="38" height="34" rx="14" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="-18" y="22" width="34" height="30" rx="15" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><path d="M -6 30 L -6 48 M 5 30 L 5 48" stroke="#A9B0BA" stroke-width="1.5"/><rect x="-7" y="-18.926860441876563" width="14" height="37.85372088375313" rx="7" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5" transform="translate(20.5,18.0) rotate(-33.02386755579664)"/></g><circle cx="200" cy="292" r="17" fill="url(#darkR)" stroke="#1A1D22" stroke-width="1.5"/></g><use href="#ah" transform="translate(600,0) scale(-1,1)"/><path d="M 300 248 C 392 248 402 300 396 342 C 388 410 350 468 300 472 C 250 468 212 410 204 342 C 198 300 208 248 300 248 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><path d="M 245 455 Q 300 490 355 455 L 360 470 Q 300 505 240 470 Z" fill="url(#dark)"/><path d="M 238 478 Q 300 470 362 478 L 352 532 Q 300 556 248 532 Z" fill="url(#body)" stroke="#9AA2AD" stroke-width="1.5"/><rect x="284" y="226" width="32" height="28" rx="8" fill="url(#dark)" stroke="#1A1D22" stroke-width="1.5"/><ellipse cx="300" cy="150" rx="108" ry="86" fill="url(#bodyR)" stroke="#9AA2AD" stroke-width="1.5"/><ellipse cx="300" cy="156" rx="86" ry="56" fill="url(#screen)" stroke="#1A1D22" stroke-width="1.5"/><ellipse cx="282" cy="124" rx="44" ry="12" fill="url(#gloss)"/><g filter="url(#glow)" fill="#3DE0FF"><rect x="255.0" y="131.0" width="22" height="34" rx="11.0"/><rect x="323.0" y="131.0" width="22" height="34" rx="11.0"/><path d="M 283.0 178 Q 300 189.9 317.0 178" fill="none" stroke="#3DE0FF" stroke-width="5" stroke-linecap="round"/></g><text x="300" y="910" text-anchor="middle" font-family="sans-serif" font-size="30" font-weight="700" fill="#2A2E35">A · Cápsula</text><text x="300" y="942" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#5A616B">cabeza ovalada ancha, torso en huevo, mitones</text></svg>

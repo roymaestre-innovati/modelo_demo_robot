@@ -1,0 +1,299 @@
+{
+ "text": "¡Hola! Soy Robin. Estoy aquí para ayudarte con lo que necesites. Cuéntame, ¿por dónde empezamos?",
+ "description": "Mock de eventos de visema Azure TTS (visemeId 0-21, audioOffset en ticks de 100 ns).",
+ "audioDurationTicks": 81880000,
+ "visemes": [
+  {
+   "visemeId": 0,
+   "audioOffset": 500000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 1300000
+  },
+  {
+   "visemeId": 14,
+   "audioOffset": 2430000
+  },
+  {
+   "visemeId": 2,
+   "audioOffset": 3040000
+  },
+  {
+   "visemeId": 0,
+   "audioOffset": 4150000
+  },
+  {
+   "visemeId": 15,
+   "audioOffset": 8100000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 8850000
+  },
+  {
+   "visemeId": 6,
+   "audioOffset": 10000000
+  },
+  {
+   "visemeId": 13,
+   "audioOffset": 10810000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 11530000
+  },
+  {
+   "visemeId": 21,
+   "audioOffset": 12750000
+  },
+  {
+   "visemeId": 6,
+   "audioOffset": 13310000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 14560000
+  },
+  {
+   "visemeId": 0,
+   "audioOffset": 15150000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 19100000
+  },
+  {
+   "visemeId": 15,
+   "audioOffset": 20110000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 20860000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 21420000
+  },
+  {
+   "visemeId": 6,
+   "audioOffset": 22490000
+  },
+  {
+   "visemeId": 2,
+   "audioOffset": 23200000
+  },
+  {
+   "visemeId": 20,
+   "audioOffset": 24170000
+  },
+  {
+   "visemeId": 6,
+   "audioOffset": 24770000
+  },
+  {
+   "visemeId": 21,
+   "audioOffset": 26070000
+  },
+  {
+   "visemeId": 2,
+   "audioOffset": 26800000
+  },
+  {
+   "visemeId": 13,
+   "audioOffset": 27990000
+  },
+  {
+   "visemeId": 2,
+   "audioOffset": 28690000
+  },
+  {
+   "visemeId": 16,
+   "audioOffset": 30510000
+  },
+  {
+   "visemeId": 7,
+   "audioOffset": 31160000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 32300000
+  },
+  {
+   "visemeId": 2,
+   "audioOffset": 32950000
+  },
+  {
+   "visemeId": 13,
+   "audioOffset": 33960000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 34690000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 35250000
+  },
+  {
+   "visemeId": 20,
+   "audioOffset": 36590000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 37170000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 38130000
+  },
+  {
+   "visemeId": 14,
+   "audioOffset": 38970000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 39670000
+  },
+  {
+   "visemeId": 20,
+   "audioOffset": 41030000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 41630000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 42980000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 43700000
+  },
+  {
+   "visemeId": 15,
+   "audioOffset": 44870000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 45570000
+  },
+  {
+   "visemeId": 15,
+   "audioOffset": 46530000
+  },
+  {
+   "visemeId": 6,
+   "audioOffset": 47150000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 48150000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 48830000
+  },
+  {
+   "visemeId": 15,
+   "audioOffset": 49890000
+  },
+  {
+   "visemeId": 0,
+   "audioOffset": 50500000
+  },
+  {
+   "visemeId": 20,
+   "audioOffset": 54450000
+  },
+  {
+   "visemeId": 7,
+   "audioOffset": 55160000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 56200000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 57410000
+  },
+  {
+   "visemeId": 2,
+   "audioOffset": 58470000
+  },
+  {
+   "visemeId": 21,
+   "audioOffset": 59480000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 60120000
+  },
+  {
+   "visemeId": 0,
+   "audioOffset": 61240000
+  },
+  {
+   "visemeId": 21,
+   "audioOffset": 63590000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 64220000
+  },
+  {
+   "visemeId": 13,
+   "audioOffset": 65260000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 66130000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 66800000
+  },
+  {
+   "visemeId": 19,
+   "audioOffset": 67860000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 68950000
+  },
+  {
+   "visemeId": 21,
+   "audioOffset": 70930000
+  },
+  {
+   "visemeId": 4,
+   "audioOffset": 71960000
+  },
+  {
+   "visemeId": 15,
+   "audioOffset": 73080000
+  },
+  {
+   "visemeId": 2,
+   "audioOffset": 73680000
+  },
+  {
+   "visemeId": 21,
+   "audioOffset": 74660000
+  },
+  {
+   "visemeId": 8,
+   "audioOffset": 75330000
+  },
+  {
+   "visemeId": 15,
+   "audioOffset": 76440000
+  },
+  {
+   "visemeId": 0,
+   "audioOffset": 77080000
+  }
+ ]
+}

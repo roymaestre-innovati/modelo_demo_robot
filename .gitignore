@@ -1,0 +1,44 @@
+# Dependencias
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Builds y salidas de Vite / Playwright
+dist/
+demo/test-results/
+demo/playwright-report/
+demo/tests/output/
+blob-report/
+
+# Bundles generados de Robin
+robin/robin.bundle.glb
+robin/robin.bundle.br
+
+# Renders de Blender (se regeneran con blender/run.sh, ver README)
+blender/renders/*
+!blender/renders/AvatarRobin.png
+
+# Copias de seguridad de Blender
+*.blend1
+*.blend2
+
+# Entorno y secretos (claves de Azure Speech / LLM)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
