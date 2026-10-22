@@ -25,3 +25,4 @@ button:disabled { opacity: .5; cursor: default; }
 #dev summary { cursor: pointer; }
 #eye-buttons { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 0; }
 #eye-buttons button { padding: 4px 10px; font-size: 13px; }
+select { font: inherit; border: 0; border-radius: 8px; padding: 6px 8px; background: #fff; color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.15); cursor: pointer; }

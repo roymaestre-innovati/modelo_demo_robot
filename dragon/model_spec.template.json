@@ -1,0 +1,170 @@
+{
+  "template_version": 1,
+  "id": "dragon-ignis-01",
+  "name": "Ignis",
+  "category": "mitológico",
+  "species_or_archetype": "Dragón elemental de fuego joven. Actúa como guía carismático y compañero de aventuras.",
+  "runtime": {
+    "target": "conversation_demo",
+    "accent": "#FF5733"
+  },
+  "design": {
+    "style": "estilizado, low-poly vibrante estilo 'cartoon' 3D",
+    "silhouette": "Cuerpo robusto en forma de pera, cuello largo, alas grandes plegadas a la espalda que forman una capa natural, y una cola gruesa que sirve de contrapeso en el suelo.",
+    "shape_language": "Triángulos redondeados, curvas fluidas y dinámicas. Formas puntiagudas pero suaves al tacto (sin bordes hiperrealistas o amenazantes).",
+    "proportions": "Cabeza grande (aproximadamente 25% del cuerpo) para enfatizar la expresividad facial, ojos enormes, extremidades cortas pero musculosas, alas amplias proporcionadas para planear.",
+    "required_features": [
+      "Cuernos curvados hacia atrás en la cabeza",
+      "Alas de murciélago (membranosas) en la espalda",
+      "Escamas grandes y acorazadas en el vientre",
+      "Cola larga terminada en una punta en forma de flecha o llama"
+    ],
+    "avoid": [
+      "Hiperrealismo o texturas reptilianas excesivamente detalladas",
+      "Proporciones humanas o antropomorfismo extremo",
+      "Diseño aterrador, agresivo o con sangre",
+      "Demasiados detalles finos que generen ruido visual"
+    ]
+  },
+  "coordinate_system": {
+    "units": "metros",
+    "up": "+Z",
+    "forward": "-Y",
+    "origin": "center_of_ground_contact",
+    "height": 1.5
+  },
+  "anatomy": {
+    "locomotion": "bípedo",
+    "parts": [
+      {
+        "name": "main_body",
+        "purpose": "Torso en forma de barril que sirve como base estructural, conectando extremidades, alas y cabeza.",
+        "parent": null,
+        "independent_motion": false
+      },
+      {
+        "name": "head",
+        "purpose": "Aloja el rostro expresivo, cuernos y hocico. Crucial para la gesticulación al hablar.",
+        "parent": "main_body",
+        "independent_motion": true
+      },
+      {
+        "name": "wings",
+        "purpose": "Alas en la espalda para volar, que también se abren o cierran para expresar emociones (ej. sorpresa o miedo).",
+        "parent": "main_body",
+        "independent_motion": true
+      },
+      {
+        "name": "tail",
+        "purpose": "Cola pesada que se balancea para mantener el equilibrio y se agita según el estado de ánimo.",
+        "parent": "main_body",
+        "independent_motion": true
+      },
+      {
+        "name": "arms",
+        "purpose": "Brazos cortos con garras romas, usados para gesticular mientras habla.",
+        "parent": "main_body",
+        "independent_motion": true
+      }
+    ]
+  },
+  "materials": [
+    {
+      "name": "BodyMat",
+      "base_color": "#D93829",
+      "metallic": 0.1,
+      "roughness": 0.4
+    },
+    {
+      "name": "BellyAndHornsMat",
+      "base_color": "#FCA311",
+      "metallic": 0.0,
+      "roughness": 0.6
+    },
+    {
+      "name": "WingMembraneMat",
+      "base_color": "#450920",
+      "metallic": 0.0,
+      "roughness": 0.7
+    }
+  ],
+  "face": {
+    "mode": "screen_patch",
+    "mesh_name": "FaceScreen",
+    "material_name": "FaceScreenMat",
+    "uv_bounds": [0.0, 1.0, 0.0, 1.0],
+    "notes": "Para conversation_demo, ubicar el parche en el área frontal del hocico/rostro ancho para proyectar los ojos expresivos 2D."
+  },
+  "rig": {
+    "type": "personalizado",
+    "skinning": "pesos_suaves",
+    "root_bone": "Root",
+    "bones": [
+      {
+        "name": "Root",
+        "parent": null,
+        "role": "Centro de gravedad y movimiento general"
+      },
+      {
+        "name": "Spine",
+        "parent": "Root",
+        "role": "Flexibilidad del torso"
+      },
+      {
+        "name": "Neck",
+        "parent": "Spine",
+        "role": "Base para inclinar y rotar el cuello"
+      },
+      {
+        "name": "Head",
+        "parent": "Neck",
+        "role": "Control principal de la cabeza y seguimiento de la mirada"
+      },
+      {
+        "name": "Wing_L",
+        "parent": "Spine",
+        "role": "Control del ala izquierda"
+      },
+      {
+        "name": "Wing_R",
+        "parent": "Spine",
+        "role": "Control del ala derecha"
+      },
+      {
+        "name": "Tail_Base",
+        "parent": "Root",
+        "role": "Control principal del balanceo de la cola"
+      }
+    ],
+    "notes": "Asegurar que los pesos (skinning) entre el cuello, torso y alas tengan una transición suave para evitar distorsiones extremas al animar."
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "loop": true,
+      "description": "Respiración profunda y rítmica. El pecho se infla, las alas suben levemente con cada inhalación y la punta de la cola se balancea suavemente de lado a lado."
+    },
+    {
+      "name": "talk_1",
+      "loop": false,
+      "description": "El dragón alza una de sus garras delanteras y asiente enfáticamente con la cabeza mientras explica un punto."
+    },
+    {
+      "name": "talk_2",
+      "loop": false,
+      "description": "Se yergue un poco sobre sus patas traseras, abre las alas a la mitad para parecer más grande y estira el cuello (gesto de entusiasmo o revelación)."
+    },
+    {
+      "name": "talk_3",
+      "loop": false,
+      "description": "Ladea la cabeza con curiosidad, pliega las alas fuertemente contra su cuerpo y da un pequeño toque en el suelo con la punta de la cola."
+    }
+  ],
+  "export": {
+    "format": "glb",
+    "model_path": "assets/models/dragon-ignis-01/model.glb",
+    "metadata_path": "assets/models/dragon-ignis-01/metadata.json",
+    "max_triangles": 30000,
+    "node_names_must_not_contain": ":"
+  }
+}

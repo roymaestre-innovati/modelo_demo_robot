@@ -1,7 +1,7 @@
 // Genera demo/mock/visemes.json: eventos de visema en formato Azure ({ visemeId, audioOffset })
 // para una frase en espanol, con una aproximacion letra -> visema y duraciones tipicas.
 // audioOffset en ticks de 100 ns (ms = ticks / 10 000), igual que SpeechSynthesisVisemeEventArgs.
-// Uso: node tools/gen_mock_visemes.mjs ["texto"]
+// Uso: node tools/gen_mock_visemes.mjs ["texto"] [archivo en demo/mock/, por defecto visemes.json]
 import { writeFile } from 'node:fs/promises';
 
 const text = process.argv[2] ??
@@ -49,6 +49,7 @@ const out = {
   audioDurationTicks: Math.round((t + 100) * 10000),
   visemes: events,
 };
-const path = new URL('../demo/mock/visemes.json', import.meta.url);
+const file = process.argv[3] ?? 'visemes.json';
+const path = new URL(`../demo/mock/${file}`, import.meta.url);
 await writeFile(path, JSON.stringify(out, null, 1) + '\n');
-console.log(`${events.length} eventos, ${(t / 1000).toFixed(2)} s -> demo/mock/visemes.json`);
+console.log(`${events.length} eventos, ${(t / 1000).toFixed(2)} s -> demo/mock/${file}`);

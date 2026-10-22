@@ -1,0 +1,144 @@
+{
+  "spec_version": 2,
+  "id": "ignis",
+  "name": "Ignis",
+  "category": "mitológico",
+  "species_or_archetype": "Dragón de fuego joven. Guía carismático y compañero de aventuras: curioso, entusiasta y amable.",
+  "reference_image": "dragon/img-referencia.jpg",
+  "runtime": {
+    "target": "conversation_demo",
+    "accent": "#FF5733"
+  },
+  "design": {
+    "style": "Low-poly facetado estilo cartoon 3D: flat shading, caras planas visibles, sin texturas, sin contornos. Fiel a la imagen de referencia.",
+    "silhouette": "Cuadrúpedo de pie sobre las cuatro patas, cuello largo y erguido en S suave, cabeza alta mirando al frente. Torso en forma de pera, más ancho atrás. Alas membranosas plegadas sobre la espalda. Cola larga y gruesa que se apoya en el suelo y sube en curva al final, rematada en una llama.",
+    "shape_language": "Triángulos redondeados y curvas fluidas. Formas puntiagudas pero suaves (cuernos, púas dorsales, garras), nunca amenazantes.",
+    "proportions": "Cabeza grande (~25 % de la altura total) con ojos enormes y hocico corto y redondeado. Patas cortas y robustas. Alas abiertas con envergadura ~1.6 veces la longitud del torso.",
+    "required_features": [
+      "Dos cuernos curvados hacia atrás y hacia arriba, color de vientre",
+      "Pequeñas púas dorsales desde la nuca hasta la cola",
+      "Alas de murciélago con 3 dedos de membrana",
+      "Placas ventrales grandes y segmentadas desde el cuello hasta el vientre",
+      "Garras romas en las cuatro patas (3 por pata)",
+      "Cola terminada en una llama emisiva",
+      "Sonrisa suave en reposo; boca que se abre con la mandíbula"
+    ],
+    "avoid": [
+      "Hiperrealismo o texturas de escamas detalladas",
+      "Postura bípeda o antropomorfismo",
+      "Dientes afilados, sangre o expresión agresiva",
+      "Detalle fino que genere ruido visual en plano medio"
+    ]
+  },
+  "coordinate_system": {
+    "units": "metros",
+    "blender_up": "+Z",
+    "blender_forward": "-Y",
+    "gltf_note": "El exportador glTF convierte a Y arriba y frente hacia +Z, igual que robin.glb.",
+    "origin": "centro del apoyo en el suelo, entre las cuatro patas",
+    "height": 1.5,
+    "height_note": "Hasta la punta de los cuernos, en la pose de reposo."
+  },
+  "anatomy": {
+    "locomotion": "cuadrúpedo, sin locomoción en la demo",
+    "parts": [
+      { "name": "body", "purpose": "Torso, cuello, cabeza, patas y cola en una sola malla con pesos suaves.", "parent": null },
+      { "name": "wings", "purpose": "Membranas de las alas; pueden ser parte de la malla principal o mallas aparte con pesos.", "parent": "body" },
+      { "name": "horns_spikes_claws", "purpose": "Pueden ir en la malla principal o como piezas rígidas emparentadas a su hueso.", "parent": "body" },
+      { "name": "mouth_interior", "purpose": "Interior oscuro y lengua, visibles solo al abrir la mandíbula. Sin dientes.", "parent": "Jaw" },
+      { "name": "FaceScreen", "purpose": "Dos parches de ojos que siguen la superficie de la cabeza; reciben el CanvasTexture.", "parent": "Head" },
+      { "name": "TailFlame", "purpose": "Llama de la cola, malla rígida emisiva.", "parent": "Tail_6" }
+    ]
+  },
+  "materials": [
+    { "name": "BodyMat", "base_color": "#D93829", "metallic": 0.0, "roughness": 0.55 },
+    { "name": "BellyHornsMat", "base_color": "#FCA311", "metallic": 0.0, "roughness": 0.6 },
+    { "name": "WingMembraneMat", "base_color": "#7A1426", "metallic": 0.0, "roughness": 0.7, "double_sided": true },
+    { "name": "ClawMat", "base_color": "#5A0F1A", "metallic": 0.0, "roughness": 0.5 },
+    { "name": "MouthMat", "base_color": "#4A0E14", "metallic": 0.0, "roughness": 0.8 },
+    { "name": "TailFlameMat", "base_color": "#FFB020", "emissive": "#FF7A1A", "emissive_strength": 2.5 },
+    { "name": "FaceScreenMat", "base_color": "#FFFFFF", "notes": "Textura de ejemplo; three.js la reemplaza por el CanvasTexture de los ojos." }
+  ],
+  "face": {
+    "eyes": {
+      "mode": "canvas_patches",
+      "mesh_name": "FaceScreen",
+      "material_name": "FaceScreenMat",
+      "uv_layout": "Ojo izquierdo de Ignis en u 0.0–0.5, ojo derecho en u 0.5–1.0, v 0–1 en ambos.",
+      "look": "Esclerótica blanca, iris marrón-ámbar grande, pupila oscura, brillo especular, párpado superior del color del cuerpo.",
+      "states": ["neutral", "listening", "thinking", "happy", "surprised"]
+    },
+    "mouth": {
+      "mode": "jaw_and_shape_keys",
+      "jaw_bone": "Jaw",
+      "shape_keys": ["MouthWide", "MouthRound"],
+      "notes": "Jaw y los shape keys los controla three.js en tiempo de ejecución; ningún clip debe animarlos."
+    }
+  },
+  "rig": {
+    "skinning": "pesos suaves automáticos (ARMATURE_AUTO) con correcciones donde haga falta",
+    "naming": "Sufijos _L / _R. Sin ':' ni '.' en ningún nombre (three.js los elimina al resolver animaciones). Ninguna malla con el mismo nombre que un hueso.",
+    "bones": [
+      { "name": "Root", "parent": null, "role": "Origen en el suelo" },
+      { "name": "Hips", "parent": "Root", "role": "Pelvis y centro de gravedad" },
+      { "name": "Spine", "parent": "Hips" },
+      { "name": "Spine1", "parent": "Spine" },
+      { "name": "Spine2", "parent": "Spine1", "role": "Pecho; la capa procedural de respiración lo usa" },
+      { "name": "Neck", "parent": "Spine2" },
+      { "name": "Neck1", "parent": "Neck" },
+      { "name": "Neck2", "parent": "Neck1" },
+      { "name": "Head", "parent": "Neck2" },
+      { "name": "Jaw", "parent": "Head" },
+      { "name": "FrontUpperLeg_L", "parent": "Spine2" },
+      { "name": "FrontLowerLeg_L", "parent": "FrontUpperLeg_L" },
+      { "name": "FrontFoot_L", "parent": "FrontLowerLeg_L" },
+      { "name": "FrontToes_L", "parent": "FrontFoot_L" },
+      { "name": "BackUpperLeg_L", "parent": "Hips" },
+      { "name": "BackLowerLeg_L", "parent": "BackUpperLeg_L" },
+      { "name": "BackFoot_L", "parent": "BackLowerLeg_L" },
+      { "name": "BackToes_L", "parent": "BackFoot_L" },
+      { "name": "Wing1_L", "parent": "Spine2", "role": "Hombro del ala" },
+      { "name": "Wing2_L", "parent": "Wing1_L", "role": "Antebrazo del ala" },
+      { "name": "Wing3_L", "parent": "Wing2_L", "role": "Dedos de la membrana" },
+      { "name": "Tail_1", "parent": "Hips" },
+      { "name": "Tail_2", "parent": "Tail_1" },
+      { "name": "Tail_3", "parent": "Tail_2" },
+      { "name": "Tail_4", "parent": "Tail_3" },
+      { "name": "Tail_5", "parent": "Tail_4" },
+      { "name": "Tail_6", "parent": "Tail_5", "role": "Punta; lleva la llama" }
+    ],
+    "mirror_note": "Todos los huesos _L tienen su equivalente _R."
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "loop": true,
+      "duration_s": [4, 6],
+      "description": "Respiración profunda y rítmica: el pecho se infla, las alas suben levemente al inhalar, la punta de la cola se balancea de lado a lado. Cambio de peso sutil entre patas."
+    },
+    {
+      "name": "talk_1",
+      "loop": false,
+      "duration_s": [3, 5],
+      "description": "Alza una garra delantera a media altura mientras asiente con la cabeza para remarcar un punto, y la vuelve a apoyar."
+    },
+    {
+      "name": "talk_2",
+      "loop": false,
+      "duration_s": [3, 5],
+      "description": "Se yergue un poco elevando el pecho (las patas traseras quedan apoyadas), abre las alas a la mitad y estira el cuello: gesto de entusiasmo."
+    },
+    {
+      "name": "talk_3",
+      "loop": false,
+      "duration_s": [3, 5],
+      "description": "Ladea la cabeza con curiosidad, pliega las alas contra el cuerpo y da un pequeño toque en el suelo con la cola."
+    }
+  ],
+  "export": {
+    "format": "glb",
+    "model_path": "assets/ignis.glb",
+    "max_triangles": 30000,
+    "node_names_must_not_contain": [":", "."]
+  }
+}

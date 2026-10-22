@@ -18,16 +18,21 @@ const STATE_BIAS = {
   speaking: { pitch: 0, yaw: 0, roll: 0 },
 };
 
+// huesos que usa la capa procedural (nombres por defecto: Robin)
+const DEFAULT_BONES = { spine2: 'Spine2', neck: 'Neck', head: 'Head' };
+
 /**
  * Animacion del cuerpo: AnimationMixer con 'idle' en reposo y talk_1..3 aleatorios al hablar
  * (crossfade ~0.4 s, sin repetir clip), mas una capa procedural leve encima.
+ * No sabe que modelo anima: los huesos de la capa procedural llegan por opciones.
  */
 export class BodyAnimator {
   /**
    * @param {THREE.Object3D} root escena del GLB
    * @param {THREE.AnimationClip[]} clips
+   * @param {{ bones?: { spine2: string, neck: string, head: string } }} [opts]
    */
-  constructor(root, clips) {
+  constructor(root, clips, { bones = DEFAULT_BONES } = {}) {
     this.root = root;
     this.mixer = new THREE.AnimationMixer(root);
     const get = (name) => {
@@ -48,10 +53,16 @@ export class BodyAnimator {
     this.talkHistory = [];
 
     this.bones = {
-      spine2: root.getObjectByName('Spine2'),
-      neck: root.getObjectByName('Neck'),
-      head: root.getObjectByName('Head'),
+      spine2: root.getObjectByName(bones.spine2),
+      neck: root.getObjectByName(bones.neck),
+      head: root.getObjectByName(bones.head),
     };
+    // reposo de los huesos procedurales y pistas de cada clip (para restoreUnanimated)
+    this.rest = new Map();
+    for (const b of Object.values(this.bones)) if (b) this.rest.set(b, b.quaternion.clone());
+    this.tracked = new Map(
+      [this.idle, ...this.talks].map((a) => [a, new Set(a.getClip().tracks.map((t) => t.name.split('.')[0]))]),
+    );
     this.time = 0;
     this.state = 'idle';
     this.bias = { ...STATE_BIAS.idle };
@@ -95,8 +106,26 @@ export class BodyAnimator {
       const remaining = this.current.getClip().duration - this.current.time;
       if (remaining <= TALK_FADE) this._nextTalk();
     }
+    this.restoreUnanimated();
     this.mixer.update(dt);
     this._procedural(dt);
+  }
+
+  /**
+   * La capa procedural rota sobre el valor que deja el mixer. Si ninguna accion activa tiene pista
+   * para un hueso, el mixer no lo reescribe y el giro se acumularia frame a frame: se devuelve a reposo.
+   */
+  restoreUnanimated() {
+    for (const [bone, q] of this.rest) {
+      let animated = false;
+      for (const [action, names] of this.tracked) {
+        if (action.isRunning() && action.getEffectiveWeight() > 0 && names.has(bone.name)) {
+          animated = true;
+          break;
+        }
+      }
+      if (!animated) bone.quaternion.copy(q);
+    }
   }
 
   /** Capa procedural leve encima del mixer (respiracion y micro-movimientos de cabeza). */

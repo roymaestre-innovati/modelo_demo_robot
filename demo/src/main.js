@@ -2,10 +2,8 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import robinUrl from '@assets/robin.glb?url';
 import { EYE_STATES } from '@assets/face/faceRenderer.js';
-import mockVisemes from '../mock/visemes.json';
-import { FaceScreen } from './faceScreen.js';
+import { PROFILES, profileFromUrl } from './models/index.js';
 import { VisemePlayer } from './visemePlayer.js';
 import { BodyAnimator } from './bodyAnimator.js';
 import { Conversation, MockListener } from './conversation.js';
@@ -13,13 +11,17 @@ import { MockSpeechSource } from './speech/MockSpeechSource.js';
 import { MockLLM } from './llm/LLMClient.js';
 
 const STATE_LABEL = { idle: 'en reposo', listening: 'escuchando…', thinking: 'pensando…', speaking: 'hablando' };
-const FRAMING = {
-  medium: { pos: new THREE.Vector3(0, 1.15, 2.6), target: new THREE.Vector3(0, 1.02, 0) },
-  full: { pos: new THREE.Vector3(0, 0.9, 4.4), target: new THREE.Vector3(0, 0.62, 0) },
-};
 
-// estado expuesto para depuracion y el test de humo
-const debug = (window.__robin = { ready: false, state: 'loading', errors: [] });
+// perfil de modelo: ?model=robin (por defecto) o ?model=ignis
+const profile = profileFromUrl();
+const FRAMING = profile.framing;
+document.title = `${profile.label} · demo`;
+document.documentElement.style.setProperty('--accent', profile.accent);
+document.documentElement.style.setProperty('--accent-ink', profile.accentInk);
+
+// estado expuesto para depuracion y el test de humo (__demo es un alias generico de __robin)
+const debug = { ready: false, state: 'loading', errors: [], profile: profile.id };
+window.__robin = window.__demo = debug;
 
 // ---------------------------------------------------------------- escena
 const canvas = document.getElementById('scene');
@@ -31,11 +33,11 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFShadowMap;
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xe4e8ed);
-scene.fog = new THREE.Fog(0xe4e8ed, 6, 14);
+scene.background = new THREE.Color(profile.scene.background);
+scene.fog = new THREE.Fog(profile.scene.background, ...profile.scene.fog);
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-scene.environmentIntensity = 0.55;
+scene.environmentIntensity = profile.scene.environmentIntensity;
 
 const camera = new THREE.PerspectiveCamera(32, 1, 0.05, 50);
 camera.position.copy(FRAMING.medium.pos);
@@ -105,8 +107,17 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'f' || e.key === 'F') setFraming(framing === 'medium' ? 'full' : 'medium');
 });
 
-// ---------------------------------------------------------------- Robin
-let face, body, visemes, conversation;
+// ---------------------------------------------------------------- selector de modelo
+const modelSelect = document.getElementById('model');
+for (const p of Object.values(PROFILES)) modelSelect.append(new Option(p.label, p.id, false, p.id === profile.id));
+modelSelect.addEventListener('change', () => {
+  const url = new URL(window.location.href);
+  url.searchParams.set('model', modelSelect.value);
+  window.location.assign(url);
+});
+
+// ---------------------------------------------------------------- personaje
+let face, body, visemes, conversation, effects;
 const statusEl = document.getElementById('status');
 const statusText = document.getElementById('status-text');
 const talkBtn = document.getElementById('talk');
@@ -119,31 +130,32 @@ function showState(state) {
 }
 
 new GLTFLoader().load(
-  robinUrl,
+  profile.glb,
   (gltf) => {
     const model = gltf.scene;
     model.traverse((o) => {
       if (o.isMesh) {
         o.castShadow = true;
         o.receiveShadow = true;
+        if (o.isSkinnedMesh) o.frustumCulled = false; // la caja de reposo no sigue a la animacion
       }
     });
     scene.add(model);
 
-    const screenMesh = model.getObjectByName('FaceScreen');
-    if (!screenMesh) throw new Error('no se encontro la malla FaceScreen');
-    face = new FaceScreen(screenMesh);
-    body = new BodyAnimator(model, gltf.animations);
+    // la cara se crea con el modelo aun en reposo (antes del primer mixer.update)
+    face = profile.createFace(model);
+    body = new BodyAnimator(model, gltf.animations, { bones: profile.bodyBones });
     visemes = new VisemePlayer(face);
+    effects = profile.setupEffects({ scene, model });
 
-    const speech = new MockSpeechSource(mockVisemes);
+    const speech = new MockSpeechSource(profile.visemes);
     conversation = new Conversation({
       face,
       body,
       visemes,
       speech,
-      listener: new MockListener(),
-      llm: new MockLLM(mockVisemes.text),
+      listener: new MockListener(profile.greeting),
+      llm: new MockLLM(profile.visemes.text),
       onState: showState,
     });
     document.getElementById('tone').addEventListener('change', (e) => (speech.tone = e.target.checked));
@@ -164,7 +176,7 @@ new GLTFLoader().load(
       body,
       visemes,
       clips: gltf.animations.map((c) => c.name),
-      faceTextureIsCanvas: screenMesh.material.emissiveMap?.isCanvasTexture === true,
+      faceTextureIsCanvas: face.texture?.isCanvasTexture === true,
     });
     showState('idle');
   },
@@ -172,7 +184,7 @@ new GLTFLoader().load(
   (err) => {
     console.error(err);
     debug.errors.push(String(err));
-    statusText.textContent = 'error al cargar robin.glb';
+    statusText.textContent = `error al cargar el modelo ${profile.label}`;
   },
 );
 
@@ -187,6 +199,7 @@ renderer.setAnimationLoop((now) => {
     visemes.update();
     body.update(dt);
     face.update(dt);
+    effects?.update(dt);
   }
   renderer.render(scene, camera);
 });

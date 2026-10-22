@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ignis · ojos</title>
+<style>
+  body { margin: 0; background: #1b1e23; color: #cfd6df; font: 14px sans-serif; }
+  body.grid { padding: 16px; }
+  .row { display: flex; flex-wrap: wrap; gap: 14px; }
+  figure { margin: 0; text-align: center; }
+  body.grid canvas { width: 256px; display: block; }
+  body.single canvas { display: block; }
+</style>
+</head>
+<body>
+<script type="module">
+  // Sin parametros: hoja con todos los estados y el parpadeo.
+  // ?state=happy&blink=0.5: un solo canvas 512x256 sin margen (textura para los renders de Blender).
+  // Servir con un servidor estatico: python3 -m http.server -d assets/face 8123
+  import { EyeRenderer, EYE_STATES } from './eyeRenderer.js';
+  const q = new URLSearchParams(location.search);
+  function make(state, blink, width) {
+    const c = document.createElement('canvas');
+    const r = new EyeRenderer(c, { width });
+    r.snap(state, blink);
+    r.draw();
+    return c;
+  }
+  if (q.has('state')) {
+    document.body.className = 'single';
+    document.body.append(make(q.get('state'), Number(q.get('blink') || 0), 512));
+  } else {
+    document.body.className = 'grid';
+    const row = (items) => {
+      const div = Object.assign(document.createElement('div'), { className: 'row' });
+      for (const [label, s, b] of items) {
+        const fig = document.createElement('figure');
+        fig.append(make(s, b, 512), Object.assign(document.createElement('figcaption'), { textContent: label }));
+        div.append(fig);
+      }
+      document.body.append(div);
+    };
+    row(EYE_STATES.map((s) => [s, s, 0]));
+    row([0, 0.35, 0.7, 1].map((b) => [`parpadeo ${b}`, 'neutral', b]));
+  }
+  document.body.dataset.ready = '1';
+</script>
+</body>
+</html>
